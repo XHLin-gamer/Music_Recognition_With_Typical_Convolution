@@ -24,7 +24,7 @@ function [] = CreateBuffer()
             file = strcat('Data\Raw\',name);
             y = load(file);
             sz = size(y.Buffer);
-            process = y.Buffer(1:50:sz(1,1),1);
+            process = y.Buffer(1:20:sz(1,1),1);
             filenameToSave = strcat( '.\Data\Process\',name(1:(length(name)-4)),'.mat');
             disp (filenameToSave);
             save(filenameToSave,'process');

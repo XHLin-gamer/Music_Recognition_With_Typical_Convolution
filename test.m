@@ -17,6 +17,9 @@ function test(rounds)
         disp(ans);
         if(ans == files_names{rnd})
             corr = corr + 1;
+        else
+            errPath = strcat('Data/Err/',files_names{rnd});
+            save(errPath,'tone');
         end
     end
         disp(corr);

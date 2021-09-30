@@ -1,7 +1,7 @@
 function [name]= testResult( tone )
     
 
-    tone_processed = tone(1:50:441000,1);
+    tone_processed = tone(1:20:441000,1);
     
     BuffInDir = dir('Data/Process/*.mat');
     BuffName = {BuffInDir.name};
