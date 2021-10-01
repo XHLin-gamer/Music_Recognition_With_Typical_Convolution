@@ -7,9 +7,9 @@ function test(rounds)
         %testTone = getTestTone();
         targetName = strcat('Data/Raw/',files_names{rnd});
         targetFile = load(targetName);
-        len = length(targetFile.Buffer) - 882000 - 44100;
+        len = length(targetFile.Buffer) - 441000 - 44100;
         rnd_sec = unidrnd(len) + 44100;
-        end_sec = rnd_sec + 882000;
+        end_sec = rnd_sec + 441000;
         tone = targetFile.Buffer(rnd_sec:1:end_sec);
         disp(files_names{rnd});
         %sound(tone,44100);
