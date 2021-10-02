@@ -12,13 +12,17 @@ function [name]= testResult( tone )
         y = load(fileName);
         target = y.process;
         % accelarate with gpu
-         gpu_tone_processed = gpuArray(tone_processed);
-         gpu_target = gpuArray(target);
-         gpu_h = xcorr(gpu_tone_processed,gpu_target);
-         h = gather(gpu_h);
+%          gpu_tone_processed = gpuArray(tone_processed);
+%          gpu_target = gpuArray(target);
+%          gpu_h = xcorr(gpu_tone_processed,gpu_target);
+%          h = gather(gpu_h);
 
 %       original convolution
-%        h = xcorr(tone_processed,target);
+        tune_processed = [tone_processed;zeros(length(target)-length(tone_processed),1)];
+%         h = conv(flipud(tune_processed),target);
+
+%       using fft and ifft to accelarate convolution
+        h = real(ifft(fft(tune_processed).*conj(fft(target))));
         
         maks = max(h);
 %        disp(fileName);
