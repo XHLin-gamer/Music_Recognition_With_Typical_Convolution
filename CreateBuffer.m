@@ -1,7 +1,20 @@
 function [] = CreateBuffer()
-    audioInDir = dir('Data/Music/*.mp4');
+    audioInDir = dir('Data/Music/*.mp3');
     audioNames = {audioInDir.name};
 
+
+    if(length(audioNames)==0)
+        disp 'No Audio Files in Current Directory'
+    else
+        for i=1:length(audioNames)       
+            filename = char(audioNames(i));
+            filename = strcat('Data/Music/',filename);
+            disp (filename);
+            Buffer = audioread(filename);
+            filenameToSave = strcat('Data/Raw/',char(audioNames(i)),'.mat');
+            save(filenameToSave,'Buffer');
+        end
+    end
     BuffInDir = dir('Data/Raw/*.mat');
     BuffName = {BuffInDir.name};
     if(length(BuffName)~=0)
