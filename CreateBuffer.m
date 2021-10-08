@@ -1,5 +1,5 @@
 function [] = CreateBuffer()
-    audioInDir = dir('Data/Music/*.mp3');
+    audioInDir = dir('Data/Music/*.mp4');
     audioNames = {audioInDir.name};
 
 
